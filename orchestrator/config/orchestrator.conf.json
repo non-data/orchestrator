@@ -1,0 +1,22 @@
+{
+  "ListenAddress": ":3000",
+  "AuthenticationMethod": "",
+
+  "MySQLTopologyUser": "orc_client",
+  "MySQLTopologyPassword": "P@ssw0rd",
+
+  "MySQLOrchestratorHost": "mysql",
+  "MySQLOrchestratorPort": 3306,
+  "MySQLOrchestratorDatabase": "orchestrator",
+  "MySQLOrchestratorUser": "orc_server",
+  "MySQLOrchestratorPassword": "P@ssw0rd",
+
+  "RecoveryPollSeconds": 10,
+  "RecoverMasterClusterFilters": [
+    ".*"
+  ],
+  "PostMasterFailoverProcesses": [
+    "sudo -u orchestrator /usr/local/orchestrator/failover.sh {failureType} {failureClusterAlias} {failedHost} {successorHost} >> /tmp/orc_failover.log"
+  ],
+  "ApplyMySQLPromotionAfterMasterFailover": true
+}
